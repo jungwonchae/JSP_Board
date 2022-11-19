@@ -26,8 +26,8 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #006bb3;
-  color: white;
+  background-color: white;
+  color: black;
 }
 </style>
 <script>
@@ -38,40 +38,44 @@
 </script>
 </head>
 <body>
-<h1>자유게시판</h1>
-<%
-	BoardDAO boardDAO = new BoardDAO();
-	List<BoardVO> list = boardDAO.getBoardList();
-	request.setAttribute("list",list);
-%>
-<table id="list" width="90%">
-<tr>
-	<th>Id</th>
-	<th>Category</th>
-	<th>Title</th>
-	<th>Writer</th>
-	<th>Content</th>
-	<th>Regdate</th>
-	<th>Updated At</th>
-	<th>View</th>
-	<th>Edit</th>
-	<th>Delete</th>
-</tr>
-<c:forEach items="${list}" var="u">
+<div class="container">
+	<div style="margin-top:20px">
+		<h1>자유게시판</h1>
+	</div>
+	<%
+		BoardDAO boardDAO = new BoardDAO();
+		List<BoardVO> list = boardDAO.getBoardList();
+		request.setAttribute("list",list);
+	%>
+	<table id="list" width="90%" class="table table-hover">
 	<tr>
-		<td>${u.getSeq()}</td>
-		<td>${u.getCategory()}</td>
-		<td>${u.getTitle()}</td>
-		<td>${u.getWriter()}</td>
-		<td>${u.getContent()}</td>
-		<td>${u.getRegdate()}</td>
-		<td>${u.getUpdatedAt()}</td>
-		<td><a href="view.jsp?id=${u.getSeq()}">View</a></td>
-		<td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>
-		<td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
+		<th>Id</th>
+		<th>Category</th>
+		<th>Title</th>
+		<th>Writer</th>
+		<th>Content</th>
+		<th>Regdate</th>
+		<th>Updated At</th>
+		<th>View</th>
+		<th>Edit</th>
+		<th>Delete</th>
 	</tr>
-</c:forEach>
-</table>
-<br/><a href="addpostform.jsp">Add New Post</a>
+	<c:forEach items="${list}" var="u">
+		<tr>
+			<td>${u.getSeq()}</td>
+			<td>${u.getCategory()}</td>
+			<td>${u.getTitle()}</td>
+			<td>${u.getWriter()}</td>
+			<td>${u.getContent()}</td>
+			<td>${u.getRegdate()}</td>
+			<td>${u.getUpdatedAt()}</td>
+			<td><a href="view.jsp?id=${u.getSeq()}" class="btn btn-success">View</a></td>
+			<td><a href="editform.jsp?id=${u.getSeq()}" class="btn btn-warning">Edit</a></td>
+			<td><a href="javascript:delete_ok('${u.getSeq()}')" class="btn btn-danger">Delete</a></td>
+		</tr>
+	</c:forEach>
+	</table>
+	<br/><a href="addpostform.jsp" class="btn btn-primary">Add New Post</a>
+</div>
 </body>
 </html>
