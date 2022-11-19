@@ -1,14 +1,15 @@
-package com.crud.common;
+package com.example.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class JDBCUtil2 {
+public class JDBCUtil {
 	public static Connection getConnection(){  
 	    Connection con=null;  
 	    try{  
 	        Class.forName("com.mysql.jdbc.Driver");  
-	        con= DriverManager.getConnection("jdbc:mysql://db4free.net:3306/dbname","dbid","idpwd");  
+	        con= DriverManager.getConnection("jdbc:mysql://walab.handong.edu:3306/p3_22100725",
+					"p3_22100725","VahWahj5ai");
 	    }catch(Exception e){
 	    	System.out.println(e);
 	    }  

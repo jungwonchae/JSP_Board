@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.crud.dao.BoardDAO, com.crud.bean.BoardVO,java.util.*"%>
+<%@page import="com.example.dao.BoardDAO, com.example.bean.BoardVO,java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <title>free board</title>
 <style>
 #list {
@@ -45,20 +47,26 @@
 <table id="list" width="90%">
 <tr>
 	<th>Id</th>
+	<th>Category</th>
 	<th>Title</th>
 	<th>Writer</th>
 	<th>Content</th>
 	<th>Regdate</th>
+	<th>Updated At</th>
+	<th>View</th>
 	<th>Edit</th>
 	<th>Delete</th>
 </tr>
 <c:forEach items="${list}" var="u">
 	<tr>
 		<td>${u.getSeq()}</td>
+		<td>${u.getCategory()}</td>
 		<td>${u.getTitle()}</td>
 		<td>${u.getWriter()}</td>
 		<td>${u.getContent()}</td>
 		<td>${u.getRegdate()}</td>
+		<td>${u.getUpdatedAt()}</td>
+		<td><a href="view.jsp?id=${u.getSeq()}">View</a></td>
 		<td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>
 		<td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
 	</tr>

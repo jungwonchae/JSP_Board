@@ -1,14 +1,17 @@
-package com.crud.bean;
+package com.example.bean;
 
 import java.util.Date;
 
 public class BoardVO {
 	private int seq;
+	private String category;
 	private String title;
 	private String writer;
 	private String content;
 	private Date regdate;
+	private Date updatedAt;
 	private int cnt;
+	private String photo;
 	
 	public int getSeq() {
 		return seq;
@@ -16,6 +19,8 @@ public class BoardVO {
 	public void setSeq(int seq) {
 		this.seq = seq;
 	}
+	public String getCategory() { return category;}
+	public void setCategory(String category) {this.category = category; }
 	public String getTitle() {
 		return title;
 	}
@@ -45,5 +50,13 @@ public class BoardVO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	public Date getUpdatedAt() { return updatedAt;}
+	public void setUpdatedAt(Date updatedAt) { this.updatedAt = updatedAt;}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 }
